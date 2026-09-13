@@ -109,22 +109,24 @@ $list-rows: 33;
     gap: 6px 0;
     padding: 0 0 16px;
     border-bottom: 1px solid v.$border;
-    @include r.mobile {
+    @media screen and (max-width: v.$container + v.$gutter * 2 - 1px) {
       display: grid;
       grid-template-columns: repeat(auto-fill, 23px);
       justify-content: start;
       gap: 6px 4px;
+    }
+    @include r.mobile {
       padding: 2px 0 0;
     }
   }
   &--letter-num {
-    @include r.mobile {
+    @media screen and (max-width: v.$container + v.$gutter * 2 - 1px) {
       grid-column: 1 / -1;
       justify-self: start;
     }
   }
   &--letter-latin {
-    @include r.mobile {
+    @media screen and (max-width: v.$container + v.$gutter * 2 - 1px) {
       grid-column-start: 1;
     }
   }

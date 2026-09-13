@@ -23,7 +23,6 @@
 }
 // drag - off
 @mixin undrag {
-  user-drag: none;
   -webkit-user-drag: none;
 }
 %undrag {

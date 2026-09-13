@@ -10,7 +10,7 @@
   }
   &--grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 689px;
+    grid-template-columns: minmax(464px, 1fr) minmax(0, 689px);
     gap: 32px;
     padding-top: 32px;
     @include r.until-widescreen {
