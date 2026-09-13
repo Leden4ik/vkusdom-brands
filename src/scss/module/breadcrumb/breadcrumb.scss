@@ -20,11 +20,12 @@
     display: flex;
     align-items: center;
     white-space: nowrap;
-    + .vd__breadcrumb-item::before {
-      content: "\203A";
-      display: inline-block;
-      margin: 0 12px;
-      color: v.$muted;
+    &--sep {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      margin: 0 6px 0 8px;
+      color: v.$text-soft;
     }
     &--link {
       position: relative;
@@ -34,7 +35,7 @@
   }
 }
 a.vd__breadcrumb-item--link {
-  color: v.$muted;
+  color: v.$text-soft;
   transition: color v.$speed-long v.$easing;
   &::after {
     content: "";

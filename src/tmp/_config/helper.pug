@@ -4,11 +4,15 @@ mixin breadcrumbs(items)
             each crumb, index in items
                 if crumb.url !== '#'
                     li.vd__breadcrumb-item(itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem")
+                        if index > 0
+                            +ico('crumb', 'vd__breadcrumb-item--sep')
                         a.vd__breadcrumb-item--link(href=crumb.url title=crumb.label itemprop="item")
                             span(itemprop="name") #{crumb.label}
                         meta(itemprop="position" content=index + 1)
                 else
                     li.vd__breadcrumb-item(itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page")
+                        if index > 0
+                            +ico('crumb', 'vd__breadcrumb-item--sep')
                         span.vd__breadcrumb-item--link(itemprop="name") #{crumb.label}
                         meta(itemprop="position" content=index + 1)
 

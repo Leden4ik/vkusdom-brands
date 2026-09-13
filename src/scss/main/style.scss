@@ -117,7 +117,7 @@ img {
   justify-content: center;
   width: 24px;
   height: 24px;
-  color: v.$text-soft;
+  color: v.$green;
   transition: color v.$speed-long v.$easing;
   .icon {
     width: 24px;
@@ -125,7 +125,7 @@ img {
   }
   &:hover,
   &:focus-visible {
-    color: v.$green;
+    color: v.$green-dark;
   }
 }
 .vd__section {
