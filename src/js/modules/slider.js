@@ -7,13 +7,13 @@ isElementLoaded(".js--brands-slider")
     root.dataset.vdSlider = "1";
 
     const splide = new Splide(root, {
+      type: "loop",
       autoWidth: true,
       gap: "10px",
       perMove: 2,
       arrows: false,
       pagination: false,
       drag: true,
-      rewind: false,
       speed: 500,
       breakpoints: {
         768: {gap: "8px", perMove: 1},
@@ -24,15 +24,8 @@ isElementLoaded(".js--brands-slider")
     const prev = box.querySelector(".js--brands-prev");
     const next = box.querySelector(".js--brands-next");
 
-    const updateArrows = () => {
-      const end = splide.Components.Controller.getEnd();
-      if (prev) prev.disabled = splide.index <= 0;
-      if (next) next.disabled = splide.index >= end;
-    };
-
     prev?.addEventListener("click", () => splide.go("<"));
     next?.addEventListener("click", () => splide.go(">"));
-    splide.on("mounted moved resized overflow", updateArrows);
     splide.mount();
   })
   .catch(() => {});

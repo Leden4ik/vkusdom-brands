@@ -22,7 +22,6 @@ $list-rows: 33;
     position: relative;
   }
   &--slider {
-    margin-right: calc(50% - 50vw);
     .splide__track {
       margin: -12px 0;
       padding: 12px 0;
@@ -92,11 +91,6 @@ $list-rows: 33;
     &:focus-visible {
       background-color: v.$green;
       color: v.$white;
-    }
-    &:disabled {
-      opacity: 0.4;
-      cursor: default;
-      pointer-events: none;
     }
     &-prev {
       left: -18px;
