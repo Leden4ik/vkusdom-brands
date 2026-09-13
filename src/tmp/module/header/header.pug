@@ -1,0 +1,44 @@
+header.vd__header
+  .container
+    .vd__header--block
+      +logo('vd__header--logo', true)
+      .vd__header--search
+        a(href="#" title="Каталог").vd__button.vd__header--catalog
+          +ico('catalog')
+          span Каталог
+        form(action="#" method="get" role="search").vd__header--search-field
+          label.is-sr-only(for="SiteSearch") Поиск по сайту
+          input#SiteSearch(type="search" name="q" placeholder="Поиск по сайту" autocomplete="off").vd__header--search-input
+          button(type="submit" aria-label="Найти").vd__header--search-btn
+            +ico('search')
+      button(type="button").vd__button.vd__header--delivery
+        +ico('pin')
+        span Укажите способ получения
+      nav.vd__header--actions(aria-label="Пользовательское меню")
+        a(href="#" title="Избранное").vd__header--action
+          +ico('heart')
+          span.vd__header--action-count 1
+        a(href="#" title="Корзина").vd__header--action
+          +ico('cart')
+        a(href="#" title="Личный кабинет").vd__header--action
+          +ico('user')
+      button(type="button" aria-label="Открыть меню" aria-expanded="false").vd__header--burger.js--burger
+        +ico('burger')
+    .vd__header--mobile-nav
+      a(href="#").vd__button.vd__button--sm
+        +ico('truck')
+        span Доставка
+      a(href="#").vd__button.vd__button--sm
+        +ico('bag')
+        span Самовывоз
+  nav.vd__header--nav.js--cat-nav(aria-label="Категории каталога")
+    .container
+      .vd__header--nav-inner
+        button(type="button" aria-label="Прокрутить влево").vd__header--nav-arrow.vd__header--nav-arrow-prev.js--cat-nav-prev
+          +ico('chevron-left')
+        ul.vd__header--nav-list.js--cat-nav-list(role="list")
+          each item in ['Акции', 'Хиты продаж', 'Новинки', 'Сделано в Чеченской Республике', 'Готовая еда', 'Собственное производство', 'Овощи и фрукты', 'Мясо', 'Рыба', 'Сыры', 'Хлеб', 'Молочные продукты', 'Напитки', 'Бакалея', 'Для дома']
+            li.vd__header--nav-item
+              a(href="#" title=item).vd__header--nav-link= item
+        button(type="button" aria-label="Прокрутить вправо").vd__header--nav-arrow.vd__header--nav-arrow-next.js--cat-nav-next
+          +ico('chevron-right')

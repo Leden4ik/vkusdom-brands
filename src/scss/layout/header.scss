@@ -1,0 +1,263 @@
+@use "../config/default";
+@use "../config/initial-variables" as v;
+@use "../config/responsiveness" as r;
+
+.vd__header {
+  background-color: v.$bg-header;
+  &--block {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 32px 0 0;
+    @include r.touch {
+      gap: 16px;
+      padding-top: 20px;
+    }
+    @include r.mobile {
+      gap: 16px;
+      padding: 16px 0;
+    }
+  }
+  &--logo {
+    flex-shrink: 0;
+  }
+  &--search {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    gap: 4px;
+    height: 48px;
+    padding: 3px;
+    border: 1px solid #e3e6e1;
+    border-radius: 12px;
+    background-color: v.$bg-control;
+    @include r.mobile {
+      height: auto;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background-color: transparent;
+    }
+    &-field {
+      position: relative;
+      flex-grow: 1;
+      height: 100%;
+    }
+    &-input {
+      width: 100%;
+      height: 100%;
+      padding: 0 48px 0 12px;
+      border-radius: 8px;
+      background-color: transparent;
+      font-size: 14px;
+      color: v.$text;
+      transition: box-shadow v.$speed-long v.$easing;
+      &::placeholder {
+        color: v.$muted;
+      }
+      &:focus-visible {
+        outline: none;
+        box-shadow: inset 0 0 0 1px v.$green;
+      }
+      @include r.mobile {
+        height: 40px;
+        padding: 0 40px 0 12px;
+        border: 1px solid #ccd2cb;
+      }
+    }
+    &-btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 100%;
+      color: v.$green;
+      transition: color v.$speed-long v.$easing;
+      &:hover,
+      &:focus-visible {
+        color: v.$green-dark;
+      }
+      @include r.mobile {
+        width: 40px;
+        color: #ccd2cb;
+      }
+    }
+  }
+  &--catalog {
+    width: 131px;
+    height: 40px;
+    flex-shrink: 0;
+    padding: 0 12px;
+    @include r.mobile {
+      display: none;
+    }
+  }
+  &--delivery {
+    flex-shrink: 0;
+    width: 288px;
+    height: 40px;
+    padding: 0 16px;
+    @include r.until-widescreen {
+      display: none;
+    }
+  }
+  &--actions {
+    display: flex;
+    gap: 8px;
+    margin-left: -16px;
+    @include r.touch {
+      margin-left: -8px;
+    }
+    @include r.mobile {
+      display: none;
+    }
+  }
+  &--action {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccd2cb;
+    border-radius: 8px;
+    color: #ccd2cb;
+    transition-property: background-color, border-color, color;
+    transition-duration: v.$speed-long;
+    transition-timing-function: v.$easing;
+    &:hover,
+    &:focus-visible {
+      background-color: v.$green;
+      border-color: v.$green;
+      color: v.$white;
+    }
+    &-count {
+      position: absolute;
+      top: -6px;
+      right: -1px;
+      min-width: 14px;
+      height: 14px;
+      padding: 0 3px;
+      border-radius: 7px;
+      background-color: v.$green;
+      color: v.$white;
+      font-size: 9px;
+      font-weight: v.$weight-bold;
+      line-height: 14px;
+      text-align: center;
+    }
+  }
+  &--burger {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: v.$green;
+    color: v.$white;
+    transition: background-color v.$speed-long v.$easing;
+    @include r.mobile {
+      display: flex;
+    }
+    .icon {
+      width: 24px;
+      height: 24px;
+    }
+    &:hover,
+    &:focus-visible,
+    &.is-active {
+      background-color: v.$green-dark;
+    }
+  }
+  &--mobile-nav {
+    display: none;
+    gap: 8px;
+    padding-bottom: 8px;
+    @include r.mobile {
+      display: flex;
+    }
+    .vd__button {
+      flex: 1 1 0;
+    }
+  }
+  &--nav {
+    @include r.mobile {
+      display: none;
+    }
+    &-inner {
+      display: flex;
+      align-items: center;
+      height: 72px;
+      @include r.touch {
+        height: 56px;
+      }
+    }
+    &-list {
+      display: flex;
+      flex-grow: 1;
+      gap: 32px;
+      min-width: 0;
+      padding: 0;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      @include r.touch {
+        gap: 24px;
+      }
+    }
+    &-item {
+      flex-shrink: 0;
+    }
+    &-link {
+      display: block;
+      padding: 2px 0;
+      font-size: 14px;
+      font-weight: v.$weight-semibold;
+      white-space: nowrap;
+      color: v.$text;
+      transition: color v.$speed-long v.$easing;
+      @include default.hover-link;
+      &::before {
+        height: 2px;
+        background-color: v.$green;
+      }
+      &:hover,
+      &:focus-visible {
+        color: v.$green;
+      }
+    }
+    &-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      color: v.$text;
+      transition-property: color, opacity;
+      transition-duration: v.$speed-long;
+      transition-timing-function: v.$easing;
+      .icon {
+        width: 24px;
+        height: 24px;
+      }
+      &:hover,
+      &:focus-visible {
+        color: v.$green;
+      }
+      &.is-disabled {
+        opacity: 0.3;
+        pointer-events: none;
+      }
+    }
+  }
+}

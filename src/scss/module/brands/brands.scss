@@ -1,0 +1,232 @@
+@use "../../config/default";
+@use "../../config/initial-variables" as v;
+@use "../../config/responsiveness" as r;
+
+$list-rows: 33;
+
+.vd__brands {
+  &--popular {
+    padding: 33px 0 32px;
+    overflow: hidden;
+    @include r.mobile {
+      padding: 13px 0 16px;
+    }
+    .vd__section--title {
+      margin-bottom: 9px;
+      @include r.mobile {
+        margin-bottom: 7px;
+      }
+    }
+  }
+  &--slider-box {
+    position: relative;
+  }
+  &--slider {
+    margin-right: calc(50% - 50vw);
+    .splide__track {
+      margin: -12px 0;
+      padding: 12px 0;
+    }
+  }
+  &--card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 215px;
+    height: 150px;
+    overflow: hidden;
+    border: 1px solid v.$bg-control;
+    border-radius: 24px;
+    background-color: v.$white;
+    transition-property: border-color, box-shadow, transform;
+    transition-duration: v.$speed-long;
+    transition-timing-function: v.$easing;
+    > picture,
+    > img {
+      display: block;
+      flex: none;
+      width: 100%;
+      height: calc(100% * 176 / 150);
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      &.is-cover {
+        object-fit: cover;
+      }
+    }
+    &:hover,
+    &:focus-visible {
+      border-color: v.$green;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      transform: translateY(-3px);
+    }
+    @include r.mobile {
+      width: 114.67px;
+      height: 80px;
+    }
+  }
+  &--arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid v.$white;
+    border-radius: 50%;
+    background-color: v.$bg-control;
+    color: v.$text;
+    transform: translateY(-50%);
+    transition-property: background-color, color, opacity;
+    transition-duration: v.$speed-long;
+    transition-timing-function: v.$easing;
+    .icon {
+      width: 24px;
+      height: 24px;
+    }
+    &:hover,
+    &:focus-visible {
+      background-color: v.$green;
+      color: v.$white;
+    }
+    &:disabled {
+      opacity: 0.4;
+      cursor: default;
+      pointer-events: none;
+    }
+    &-prev {
+      left: -18px;
+    }
+    &-next {
+      right: -18px;
+    }
+    @include r.mobile {
+      display: none;
+    }
+  }
+  &--alphabet {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 6px 0;
+    padding: 0 0 16px;
+    border-bottom: 1px solid v.$border;
+    @include r.mobile {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 23px);
+      justify-content: start;
+      gap: 6px 4px;
+      padding: 2px 0 0;
+    }
+  }
+  &--letter-num {
+    @include r.mobile {
+      grid-column: 1 / -1;
+      justify-self: start;
+    }
+  }
+  &--letter-latin {
+    @include r.mobile {
+      grid-column-start: 1;
+    }
+  }
+  &--letter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 23px;
+    height: 26px;
+    padding: 0 2px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: v.$weight-semibold;
+    line-height: 1;
+    color: v.$text;
+    transition-property: background-color, color;
+    transition-duration: v.$speed-long;
+    transition-timing-function: v.$easing;
+    &:hover,
+    &:focus-visible {
+      background-color: v.$green-light;
+      color: v.$green;
+    }
+    &.is-active {
+      background-color: v.$green;
+      color: v.$white;
+    }
+    &.is-disabled {
+      cursor: default;
+      pointer-events: none;
+    }
+    @include r.mobile {
+      padding: 0;
+    }
+  }
+  &--group {
+    display: grid;
+    grid-template-columns: 232px 1fr;
+    padding: 25px 0 40px;
+    &:not(.is-active) {
+      display: none;
+    }
+    @include r.touch {
+      grid-template-columns: 120px 1fr;
+    }
+    @include r.mobile {
+      grid-template-columns: 46px 1fr;
+      column-gap: 32px;
+      padding: 25px 0 32px;
+    }
+    &-letter {
+      position: sticky;
+      top: 20px;
+      align-self: start;
+      padding-top: 14px;
+      font-size: 64px;
+      font-weight: v.$weight-extrabold;
+      line-height: 0.9;
+      white-space: nowrap;
+      color: v.$text;
+    }
+    &-list {
+      max-width: 1080px;
+      height: calc(#{$list-rows} * 34px);
+      columns: 3;
+      column-gap: 64px;
+      column-fill: auto;
+      column-rule: 1px solid v.$border;
+      list-style: none;
+      @include r.touch {
+        height: auto;
+        columns: 2;
+        column-fill: balance;
+      }
+      @include r.mobile {
+        columns: 1;
+      }
+    }
+    &-item {
+      break-inside: avoid;
+      padding: 7px 0;
+    }
+    &-link {
+      display: block;
+      font-size: 14px;
+      font-weight: v.$weight-medium;
+      line-height: 20px;
+      color: v.$text;
+      transition-property: color, transform;
+      transition-duration: v.$speed-long;
+      transition-timing-function: v.$easing;
+      &:hover,
+      &:focus-visible {
+        color: v.$green;
+        transform: translateX(4px);
+      }
+    }
+  }
+}

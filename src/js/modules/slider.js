@@ -1,0 +1,38 @@
+import Splide from "@splidejs/splide";
+import {isElementLoaded} from "./isElementLoaded.js";
+
+isElementLoaded(".js--brands-slider")
+  .then((root) => {
+    if (root.dataset.vdSlider) return;
+    root.dataset.vdSlider = "1";
+
+    const splide = new Splide(root, {
+      autoWidth: true,
+      gap: "10px",
+      perMove: 2,
+      arrows: false,
+      pagination: false,
+      drag: true,
+      rewind: false,
+      speed: 500,
+      breakpoints: {
+        768: {gap: "8px", perMove: 1},
+      },
+    });
+
+    const box = root.closest(".vd__brands--slider-box") || root;
+    const prev = box.querySelector(".js--brands-prev");
+    const next = box.querySelector(".js--brands-next");
+
+    const updateArrows = () => {
+      const end = splide.Components.Controller.getEnd();
+      if (prev) prev.disabled = splide.index <= 0;
+      if (next) next.disabled = splide.index >= end;
+    };
+
+    prev?.addEventListener("click", () => splide.go("<"));
+    next?.addEventListener("click", () => splide.go(">"));
+    splide.on("mounted moved resized overflow", updateArrows);
+    splide.mount();
+  })
+  .catch(() => {});

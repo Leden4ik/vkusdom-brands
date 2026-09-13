@@ -1,0 +1,61 @@
+@use "../../config/initial-variables" as v;
+
+@use "../../config/responsiveness" as r;
+
+.vd__breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  font-size: 12px;
+  font-weight: v.$weight-normal;
+  line-height: 16px;
+  color: v.$muted;
+  list-style: none;
+  &--container {
+    @include r.mobile {
+      display: none;
+    }
+  }
+  &-item {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    + .vd__breadcrumb-item::before {
+      content: "\203A";
+      display: inline-block;
+      margin: 0 12px;
+      color: v.$muted;
+    }
+    &--link {
+      position: relative;
+      display: inline;
+      text-decoration: none;
+    }
+  }
+}
+a.vd__breadcrumb-item--link {
+  color: v.$muted;
+  transition: color v.$speed-long v.$easing;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform v.$speed-long v.$easing;
+  }
+  &:hover,
+  &:focus-visible {
+    color: v.$green-dark;
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+span.vd__breadcrumb-item--link {
+  color: v.$text-soft;
+}

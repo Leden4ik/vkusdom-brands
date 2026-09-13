@@ -1,0 +1,17 @@
+section.vd__section.vd__brands--popular
+    .container
+        h2.vd__section--title
+            span.is-hidden-mobile Популярные бренды
+            span.is-hidden-tablet Все бренды
+        .vd__brands--slider-box
+            .vd__brands--slider.splide.js--brands-slider(aria-label="Популярные бренды")
+                .splide__track
+                    ul.splide__list
+                        each brand in popularBrands
+                            li.splide__slide
+                                a(href="#" title=brand.name).vd__brands--card
+                                    img(src=brand.img alt=brand.name width="216" height="176" loading="lazy" class=(brand.fit === 'cover' ? 'is-cover' : ''))
+            button(type="button" aria-label="Предыдущие бренды").vd__brands--arrow.vd__brands--arrow-prev.js--brands-prev
+                +ico('slider-prev')
+            button(type="button" aria-label="Следующие бренды").vd__brands--arrow.vd__brands--arrow-next.js--brands-next
+                +ico('slider-next')

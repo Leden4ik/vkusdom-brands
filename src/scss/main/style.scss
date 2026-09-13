@@ -1,0 +1,147 @@
+@use "../config/default";
+@use "../config/initial-variables" as v;
+@use "../config/responsiveness" as r;
+
+html {
+  font-size: 16px;
+}
+body {
+  font-family: v.$font-family;
+  font-size: v.$font-size;
+  font-weight: v.$weight-normal;
+  line-height: 1.4;
+  color: v.$text;
+  background-color: v.$bg;
+}
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+main {
+  flex-grow: 1;
+  width: 100%;
+}
+body {
+  section,
+  header,
+  footer {
+    width: 100%;
+  }
+}
+img {
+  @include default.undrag;
+  @include default.unselectable;
+}
+.container {
+  width: 100%;
+  max-width: v.$container + v.$gutter * 2;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: v.$gutter;
+  padding-right: v.$gutter;
+  @include r.touch {
+    padding-left: v.$gutter-tablet;
+    padding-right: v.$gutter-tablet;
+  }
+  @include r.mobile {
+    padding-left: v.$gutter-mobile;
+    padding-right: v.$gutter-mobile;
+  }
+}
+.icon {
+  display: block;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: inherit;
+}
+.vd__logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  transition: opacity v.$speed-long v.$easing;
+  &:hover,
+  &:focus-visible {
+    opacity: 0.8;
+  }
+  &--img {
+    display: block;
+    width: 164px;
+    height: 40px;
+  }
+  &--img-mobile {
+    display: none;
+    width: 44px;
+    height: 41px;
+  }
+  &--adaptive {
+    @include r.mobile {
+      .vd__logo--img {
+        display: none;
+      }
+      .vd__logo--img-mobile {
+        display: block;
+      }
+    }
+  }
+}
+.vd__page {
+  &--head {
+    padding: 16px 0;
+  }
+  &--title-box {
+    display: flex;
+    align-items: center;
+    gap: 19px;
+    margin-top: 6px;
+    @include r.mobile {
+      gap: 8px;
+      margin-top: 0;
+    }
+  }
+  &--title {
+    font-size: 38px;
+    font-weight: v.$weight-bold;
+    line-height: 1.2;
+    color: v.$text-soft;
+    @include r.mobile {
+      font-size: 24px;
+    }
+  }
+}
+.vd__back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: v.$text-soft;
+  transition: color v.$speed-long v.$easing;
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+  &:hover,
+  &:focus-visible {
+    color: v.$green;
+  }
+}
+.vd__section {
+  &--title {
+    font-size: 32px;
+    font-weight: v.$weight-semibold;
+    line-height: 1.2;
+    color: v.$text-soft;
+    @include r.mobile {
+      font-size: 24px;
+    }
+  }
+}
+@media screen and (max-width: 319px) {
+  body,
+  html {
+    min-width: 319px;
+  }
+}

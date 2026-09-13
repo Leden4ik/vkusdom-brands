@@ -1,0 +1,35 @@
+extends layout/default
+include _config/helper
+block variables
+  include _config/brands-data
+  -  const pageTitle = 'Бренды — ВкусДом'
+  -  const pageDescription = 'Все бренды гипермаркета «ВкусДом»: популярные бренды и алфавитный указатель'
+  -  const pageClass = 'page-brands'
+  -
+      const breadcrumbs = [
+          {label: 'Главная', url: '/'},
+          {label: 'Бренды', url: '#'},
+      ]
+
+block header
+    include module/header/header
+block footer
+    include module/footer/footer
+block scripts
+    include module/js
+    block page_scripts
+
+block content
+    main.vd__brands
+        section.vd__page--head
+            .container
+                +breadcrumbs(breadcrumbs)
+                .vd__page--title-box
+                    a(href="/" title="Назад" aria-label="Назад").vd__back
+                        +ico('arrow-back')
+                    h1.vd__page--title Бренды
+        include module/brands/popular
+        section.vd__brands--index
+            .container
+                include module/brands/alphabet
+                include module/brands/list

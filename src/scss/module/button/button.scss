@@ -1,0 +1,53 @@
+@use "../../config/default";
+@use "../../config/initial-variables" as v;
+@use "../../config/responsiveness" as r;
+
+.vd__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 8px;
+  background-color: v.$green;
+  color: v.$white;
+  font-size: 14px;
+  font-weight: v.$weight-semibold;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  @include default.unselectable;
+  transition-property: background-color, color, box-shadow, transform;
+  transition-duration: v.$speed-long;
+  transition-timing-function: v.$easing;
+  .icon {
+    width: 18px;
+    height: 18px;
+  }
+  &:hover,
+  &:focus-visible {
+    background-color: v.$green-dark;
+    box-shadow: 0 6px 16px rgba(v.$green-dark, 0.28);
+  }
+  &:active {
+    transform: translateY(1px);
+  }
+  &--dark {
+    background-color: v.$green-dark;
+    &:hover,
+    &:focus-visible {
+      background-color: v.$green;
+    }
+  }
+  &--full {
+    width: 100%;
+  }
+  &--sm {
+    height: 40px;
+    padding: 0 12px;
+  }
+  @include r.mobile {
+    height: 40px;
+  }
+}

@@ -1,0 +1,8 @@
+.vd__brands--list
+    each group in brandsData
+        section.vd__brands--group.js--letter-group(id=`letter-${slugOf(group.letter)}` data-letter=slugOf(group.letter) class=(group.letter === defaultLetter ? 'is-active' : ''))
+            h2.vd__brands--group-letter= group.letter
+            ul.vd__brands--group-list(role="list")
+                each name in group.items
+                    li.vd__brands--group-item
+                        a(href="#" title=name).vd__brands--group-link= name

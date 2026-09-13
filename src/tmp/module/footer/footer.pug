@@ -1,0 +1,45 @@
+footer.vd__footer
+    .container
+        .vd__footer--grid
+            .vd__footer--col
+                +logo('vd__footer--logo')
+                nav(aria-label="Меню в подвале")
+                    ul.vd__footer--menu(role="list")
+                        each item in ['Каталог', 'Политика обработки ПДн', 'Акции', 'Горячая линия', 'Мои бонусы', 'Правовая информация', 'Оплата и доставка', 'Вакансии', 'Укажите способ получения', 'О компании']
+                            li.vd__footer--menu-item
+                                a(href="#" title=item).vd__footer--menu-link= item
+                .vd__footer--apps
+                    a(href="#" title="Загрузите в App Store").vd__footer--app
+                        img(src="img/apps/app-store.svg" alt="Загрузите в App Store" width="142" height="48")
+                    a(href="#" title="Доступно в Google Play").vd__footer--app
+                        img(src="img/apps/google-play.svg" alt="Доступно в Google Play" width="142" height="48")
+                    a(href="#" title="Загрузите в RuStore").vd__footer--app
+                        img(src="img/apps/rustore.svg" alt="Загрузите в RuStore" width="142" height="48")
+            .vd__footer--col
+                .vd__footer--subscribe
+                    a(href="#").vd__button
+                        span Будьте в курсе выгодных предложений
+                    p.vd__footer--subscribe-text Подпишитесь на рассылку и первыми узнавайте об акциях, скидках и новинках.
+                address.vd__footer--contacts
+                    .vd__footer--contact
+                        span.vd__footer--contact-label Телефон:
+                        a(href="tel:+78712224488").vd__footer--contact-value +7 8712 22-44-88
+                    .vd__footer--contact
+                        span.vd__footer--contact-label E-mail:
+                        a(href="mailto:info@vkusdom.ru").vd__footer--contact-value info@vkusdom.ru
+                    .vd__footer--contact
+                        span.vd__footer--contact-label Адрес:
+                        span.vd__footer--contact-value.vd__footer--contact-value-sm 364024, Чеченская Республика, г. Грозный, проспект А.А. Кадырова, 115
+                    .vd__footer--contact
+                        span.vd__footer--contact-label График работы:
+                        span.vd__footer--contact-value.vd__footer--contact-value-sm Ежедневно с 08:00 до 23:00
+                ul.vd__footer--social(role="list")
+                    li
+                        a(href="#" title="ВКонтакте" target="_blank" rel="noopener").vd__footer--social-link
+                            img(src="img/social/vk.svg" alt="ВКонтакте" width="48" height="48")
+                    li
+                        a(href="#" title="Одноклассники" target="_blank" rel="noopener").vd__footer--social-link
+                            img(src="img/social/ok.svg" alt="Одноклассники" width="48" height="48")
+        .vd__footer--bottom
+            span ©2026. Официальный сайт сети «Вкусдом» — доставка продуктов на дом
+            a(href="#" title="Политика конфиденциальности").vd__footer--policy Политика конфиденциальности

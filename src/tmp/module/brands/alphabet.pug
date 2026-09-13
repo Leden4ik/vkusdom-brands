@@ -1,0 +1,8 @@
+nav.vd__brands--alphabet.js--alphabet(aria-label="Алфавитный указатель")
+    each a in alphabet
+        - const has = brandsData.some((g) => g.letter === a.letter)
+        - const numCls = (a.letter === '0-9' ? ' vd__brands--letter-num' : '') + (a.letter === 'A' ? ' vd__brands--letter-latin' : '')
+        if has
+            a(href=`#letter-${a.slug}` class=`vd__brands--letter${numCls}${a.letter === defaultLetter ? ' is-active' : ''}` data-letter=a.slug aria-current=(a.letter === defaultLetter ? 'true' : false))= a.letter
+        else
+            span(class=`vd__brands--letter is-disabled${numCls}` aria-disabled="true")= a.letter

@@ -1,0 +1,23 @@
+mixin breadcrumbs(items)
+    nav.vd__breadcrumb--container(aria-label="Хлебные крошки")
+        ol(itemscope itemtype="https://schema.org/BreadcrumbList").vd__breadcrumb
+            each crumb, index in items
+                if crumb.url !== '#'
+                    li.vd__breadcrumb-item(itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem")
+                        a.vd__breadcrumb-item--link(href=crumb.url title=crumb.label itemprop="item")
+                            span(itemprop="name") #{crumb.label}
+                        meta(itemprop="position" content=index + 1)
+                else
+                    li.vd__breadcrumb-item(itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page")
+                        span.vd__breadcrumb-item--link(itemprop="name") #{crumb.label}
+                        meta(itemprop="position" content=index + 1)
+
+mixin ico(name, cls)
+    svg(class=`icon icon-${name}${cls ? ' ' + cls : ''}` aria-hidden="true" focusable="false")
+        use(href=`img/icons/sprite.svg#${name}`)
+
+mixin logo(cls, withMobile)
+    a(href="/" class=`vd__logo${cls ? ' ' + cls : ''}${withMobile ? ' vd__logo--adaptive' : ''}` title="ВкусДом — гипермаркет" aria-label="ВкусДом — на главную")
+        img(src="img/logo/logo-desktop.svg" alt="ВкусДом — гипермаркет" width="164" height="40").vd__logo--img
+        if withMobile
+            img(src="img/logo/logo-mobile.svg" alt="" width="44" height="41" aria-hidden="true").vd__logo--img-mobile
