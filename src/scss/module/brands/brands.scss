@@ -78,7 +78,7 @@ $list-rows: 33;
     border: 1px solid v.$white;
     border-radius: 50%;
     background-color: v.$bg-control;
-    color: v.$text;
+    color: v.$muted;
     transform: translateY(-50%);
     transition-property: background-color, color, opacity;
     transition-duration: v.$speed-long;
